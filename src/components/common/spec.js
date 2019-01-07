@@ -10,6 +10,7 @@ import Checkboard from './Checkboard'
 import EditableInput from './EditableInput'
 import Hue from './Hue'
 import Saturation from './Saturation'
+import HueSaturation from './HueSaturation'
 import Swatch from './Swatch'
 
 test('Alpha renders correctly', () => {
@@ -57,6 +58,13 @@ test('Hue renders correctly', () => {
 test('Saturation renders correctly', () => {
   const tree = renderer.create(
     <Saturation { ...red } />,
+  ).toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('HueSaturation renders correctly', () => {
+  const tree = renderer.create(
+    <HueSaturation {...red} />,
   ).toJSON()
   expect(tree).toMatchSnapshot()
 })
