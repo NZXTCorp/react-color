@@ -25,6 +25,14 @@ export class HueSaturation extends (PureComponent || Component) {
     )
   }
 
+  handleHoverChange = (e, skip) => {
+    this.props.onHoverChange && this.throttle(
+      this.props.onHoverChange,
+      saturation.calculateHueSaturationChange(e, skip, this.props, this.container),
+      e,
+    )
+  }
+
   handleMouseDown = (e) => {
     this.handleChange(e, true)
     window.addEventListener('mousemove', this.handleChange)
@@ -33,6 +41,14 @@ export class HueSaturation extends (PureComponent || Component) {
 
   handleMouseUp = () => {
     this.unbindEventListeners()
+  }
+
+  handleMouseEnter = () => {
+    this.props.onMouseEnter && this.props.onMouseEnter()
+  }
+
+  handleMouseLeave = () => {
+    this.props.onMouseLeave && this.props.onMouseLeave()
   }
 
   unbindEventListeners() {
@@ -81,7 +97,10 @@ export class HueSaturation extends (PureComponent || Component) {
       <div
         style={ styles.container }
         ref={ container => this.container = container }
+        onMouseEnter={ this.handleMouseEnter }
+        onMouseLeave={ this.handleMouseLeave }
         onMouseDown={ this.handleMouseDown }
+        onMouseMove={ this.handleHoverChange }
         onTouchMove={ this.handleChange }
         onTouchStart={ this.handleChange }
       >
