@@ -41,6 +41,7 @@ export const SketchFields = ({ onChange, rgb, hsl, hex, styles: passedStyles = {
         paddingBottom: '4px',
         textTransform: 'capitalize',
       },
+      ...passedStyles,
     },
     'disableAlpha': {
       alpha: {
