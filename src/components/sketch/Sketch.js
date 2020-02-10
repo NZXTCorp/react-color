@@ -126,11 +126,13 @@ export const Sketch = ({ width, rgb, hex, hsv, hsl, onChange, onSwatchHover,
         hex={ hex }
         onChange={ onChange }
         disableAlpha={ disableAlpha }
+        styles={styles}
       />
       <SketchPresetColors
         colors={ presetColors }
         onClick={ onChange }
         onSwatchHover={ onSwatchHover }
+        styles={styles}
       />
     </div>
   )
